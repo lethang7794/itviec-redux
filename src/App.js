@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import MainNavBar from './components/MainNavBar';
@@ -11,8 +11,9 @@ function App() {
     <div className='App'>
       <MainNavBar />
       <Switch>
-        <Route exact path='/' component={JobListPage} />
-        <Route path='/jobs/:id' component={JobDetailPage} />
+        <Route exact path='/' render={() => <JobListPage />} />
+        <Route path='/jobs/:id' render={() => <JobDetailPage />} />
+        <Redirect to='/' />
       </Switch>
     </div>
   );
