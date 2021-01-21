@@ -3,6 +3,8 @@ const fetchJobs = () => {
     'https://my-json-server.typicode.com/lethang7794/itviec-redux';
 
   return async (dispatch) => {
+    dispatch({ type: 'JOBS_FETCH_INIT' });
+
     try {
       const url = `${BACKEND_URL}/jobs`;
       const response = await fetch(url);
@@ -16,7 +18,9 @@ const fetchJobs = () => {
       }
       // TODO: Check response status
     } catch (error) {
-      // TODO: Dispatch error action
+      dispatch({
+        type: 'JOBS_FETCH_FAILURE',
+      });
     }
   };
 };
