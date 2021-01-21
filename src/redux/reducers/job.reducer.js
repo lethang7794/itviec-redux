@@ -1,6 +1,7 @@
 const initialState = {
   jobs: [],
   isLoading: false,
+  error: null,
 };
 
 const jobReducer = (state = initialState, action) => {
@@ -8,6 +9,7 @@ const jobReducer = (state = initialState, action) => {
     return {
       ...state,
       isLoading: true,
+      error: null,
     };
   }
 
@@ -15,6 +17,7 @@ const jobReducer = (state = initialState, action) => {
     return {
       ...state,
       isLoading: false,
+      error: null,
       jobs: action.payload,
     };
   }
@@ -23,6 +26,7 @@ const jobReducer = (state = initialState, action) => {
     return {
       ...state,
       isLoading: false,
+      error: action.payload,
     };
   }
 
