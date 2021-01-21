@@ -9,6 +9,7 @@ import MainNavBar from './components/MainNavBar';
 function App() {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs);
+  const isLoading = useSelector((state) => state.isLoading);
 
   useEffect(() => {
     dispatch(fetchJobs());
@@ -17,12 +18,15 @@ function App() {
     <div className='App'>
       <MainNavBar />
       <Container>
-        <h1 className='text-center'>Let's go</h1>
-        <ul>
-          {jobs.map((job) => (
-            <li key={job.id}>{job.title}</li>
-          ))}
-        </ul>
+        {isLoading ? (
+          <h1 className='text-center'>Loading</h1>
+        ) : (
+          <ul>
+            {jobs.map((job) => (
+              <li key={job.id}>{job.title}</li>
+            ))}
+          </ul>
+        )}
       </Container>
     </div>
   );
