@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container } from 'react-bootstrap';
-import fetchJobs from '../redux/actions/job.actions';
+import jobActions from '../redux/actions/job.actions';
 
 const JobListPage = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ const JobListPage = () => {
   const error = useSelector((state) => state.error);
 
   useEffect(() => {
-    dispatch(fetchJobs());
+    dispatch(jobActions.fetchJobs());
   }, [dispatch]);
 
   return (

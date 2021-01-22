@@ -27,4 +27,8 @@ const fetchJobs = () => {
   };
 };
 
-export default fetchJobs;
+const jobActions = {
+  fetchJobs,
+};
+
+export default jobActions;
