@@ -6,9 +6,9 @@ import jobActions from '../redux/actions/job.actions';
 
 const JobListPage = () => {
   const dispatch = useDispatch();
-  const jobs = useSelector((state) => state.jobs);
-  const isLoading = useSelector((state) => state.isLoading);
-  const error = useSelector((state) => state.error);
+  const jobs = useSelector((state) => state.job.jobs);
+  const isLoading = useSelector((state) => state.job.isLoading);
+  const error = useSelector((state) => state.job.error);
 
   useEffect(() => {
     dispatch(jobActions.fetchJobs());
