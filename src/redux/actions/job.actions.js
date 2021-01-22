@@ -1,7 +1,6 @@
-const fetchJobs = () => {
-  const BACKEND_URL =
-    'https://my-json-server.typicode.com/lethang7794/itviec-redux';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
+const fetchJobs = () => {
   return async (dispatch) => {
     dispatch({ type: 'JOBS_FETCH_INIT' });
 
