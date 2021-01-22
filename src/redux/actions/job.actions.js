@@ -15,11 +15,13 @@ const fetchJobs = () => {
           type: 'JOBS_FETCH_SUCCESS',
           payload: data,
         });
+      } else {
+        // This app use a fake backend, no need to check for other response status.
       }
-      // TODO: Check response status
     } catch (error) {
       dispatch({
         type: 'JOBS_FETCH_FAILURE',
+        payload: error,
       });
     }
   };

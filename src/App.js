@@ -10,6 +10,7 @@ function App() {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.jobs);
   const isLoading = useSelector((state) => state.isLoading);
+  const error = useSelector((state) => state.error);
 
   useEffect(() => {
     dispatch(fetchJobs());
@@ -18,6 +19,7 @@ function App() {
     <div className='App'>
       <MainNavBar />
       <Container>
+        {error && <h1>{`Something went wrong. Error: ${error}`}</h1>}
         {isLoading ? (
           <h1 className='text-center'>Loading</h1>
         ) : (
