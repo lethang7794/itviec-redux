@@ -34,6 +34,7 @@ const jobReducer = (state = initialState, action) => {
   if (action.type === 'JOB_FETCH_INIT') {
     return {
       ...state,
+      error: null,
       job: null, // Prevent showing old data while waiting for new one.
     };
   }
@@ -41,6 +42,7 @@ const jobReducer = (state = initialState, action) => {
   if (action.type === 'JOB_FETCH_SUCCESS') {
     return {
       ...state,
+      error: null,
       job: action.payload,
     };
   }
@@ -48,6 +50,7 @@ const jobReducer = (state = initialState, action) => {
   if (action.type === 'JOB_FETCH_FAILURE') {
     return {
       ...state,
+      error: action.payload,
     };
   }
 
