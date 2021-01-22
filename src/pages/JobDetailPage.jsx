@@ -8,6 +8,8 @@ const JobDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const job = useSelector((state) => state.job);
+  const error = useSelector((state) => state.error);
+
   useEffect(() => {
     dispatch(jobActions.fetchJob(id));
   }, [dispatch, id]);
@@ -15,6 +17,10 @@ const JobDetailPage = () => {
   return (
     <div className='JobDetailPage'>
       <Container>
+        {error && (
+          <h1 className='text-center'>{`Something went wrong. Error: ${error}`}</h1>
+        )}
+
         {job && (
           <>
             <h2>{job.title}</h2>
