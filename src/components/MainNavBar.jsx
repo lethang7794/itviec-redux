@@ -37,6 +37,9 @@ const MainNavBar = () => (
         </Nav.Link>
       </Nav>
       <Nav>
+        <Nav.Link as={Link} to='/login'>
+          Login
+        </Nav.Link>
         <Nav.Link
           href='https://github.com/lethang7794'
           target='_blank'
