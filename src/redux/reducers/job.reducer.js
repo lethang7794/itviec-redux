@@ -1,5 +1,6 @@
 const initialState = {
   jobs: [],
+  job: null,
   isLoading: false,
   error: null,
 };
@@ -27,6 +28,26 @@ const jobReducer = (state = initialState, action) => {
       ...state,
       isLoading: false,
       error: action.payload,
+    };
+  }
+
+  if (action.type === 'JOB_FETCH_INIT') {
+    return {
+      ...state,
+      job: null, // Prevent showing old data while waiting for new one.
+    };
+  }
+
+  if (action.type === 'JOB_FETCH_SUCCESS') {
+    return {
+      ...state,
+      job: action.payload,
+    };
+  }
+
+  if (action.type === 'JOB_FETCH_FAILURE') {
+    return {
+      ...state,
     };
   }
 
