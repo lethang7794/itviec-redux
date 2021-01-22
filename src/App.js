@@ -5,6 +5,7 @@ import './App.css';
 import MainNavBar from './components/MainNavBar';
 import JobListPage from './pages/JobListPage';
 import JobDetailPage from './pages/JobDetailPage';
+import JobApplyPage from './pages/JobApplyPage';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <MainNavBar />
       <Switch>
         <Route exact path='/' render={() => <JobListPage />} />
-        <Route path='/jobs/:id' render={() => <JobDetailPage />} />
+        <Route exact path='/jobs/:id/apply' render={() => <JobApplyPage />} />
+        <Route exact path='/jobs/:id' render={() => <JobDetailPage />} />
         <Redirect to='/' />
       </Switch>
     </div>

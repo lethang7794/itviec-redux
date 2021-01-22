@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Container, Button } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import jobActions from '../redux/actions/job.actions';
 
@@ -30,6 +30,9 @@ const JobDetailPage = () => {
               <>
                 <h2>{job.title}</h2>
                 <div>{job.description}</div>
+                <Link to={`/jobs/${id}/apply`}>
+                  <Button>Apply</Button>
+                </Link>
               </>
             )}
           </>
