@@ -9,6 +9,7 @@ const JobDetailPage = () => {
   const dispatch = useDispatch();
   const job = useSelector((state) => state.job);
   const error = useSelector((state) => state.error);
+  const isLoading = useSelector((state) => state.isLoading);
 
   useEffect(() => {
     dispatch(jobActions.fetchJob(id));
@@ -21,10 +22,16 @@ const JobDetailPage = () => {
           <h1 className='text-center'>{`Something went wrong. Error: ${error}`}</h1>
         )}
 
-        {job && (
+        {isLoading ? (
+          <h1 className='text-center'>Loading Job Detail</h1>
+        ) : (
           <>
-            <h2>{job.title}</h2>
-            <div>{job.description}</div>
+            {job && (
+              <>
+                <h2>{job.title}</h2>
+                <div>{job.description}</div>
+              </>
+            )}
           </>
         )}
       </Container>
