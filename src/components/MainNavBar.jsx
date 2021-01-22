@@ -17,6 +17,24 @@ const MainNavBar = () => (
         <Nav.Link as={Link} to='/'>
           Home
         </Nav.Link>
+        <Nav.Link as={Link} to='/jobs/0'>
+          Job 0
+        </Nav.Link>
+        <Nav.Link as={Link} to='/jobs/1'>
+          Job 1
+        </Nav.Link>
+        <Nav.Link as={Link} to='/jobs/2'>
+          Job 2
+        </Nav.Link>
+        <Nav.Link as={Link} to='/jobs/3'>
+          Job 3
+        </Nav.Link>
+        <Nav.Link as={Link} to='/jobs/4'>
+          Job 4
+        </Nav.Link>
+        <Nav.Link as={Link} to='/jobs/5'>
+          Job 5
+        </Nav.Link>
       </Nav>
       <Nav>
         <Nav.Link
