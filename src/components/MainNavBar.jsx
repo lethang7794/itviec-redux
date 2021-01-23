@@ -5,7 +5,7 @@ import coderSchoolLogo from '../images/CoderSchool-Logo.svg';
 import githubMark from '../images/GitHub-Mark-64px.png';
 
 const MainNavBar = () => (
-  <Navbar bg='light' expand='lg'>
+  <Navbar collapseOnSelect bg='light' expand='lg'>
     <Navbar.Brand>
       <img src={coderSchoolLogo} alt='CoderSchool' width='200px' />
     </Navbar.Brand>
@@ -14,30 +14,30 @@ const MainNavBar = () => (
 
     <Navbar.Collapse id='basic-navbar-nav'>
       <Nav className='mr-auto'>
-        <Nav.Link as={Link} to='/'>
+        <Nav.Link eventKey='1' as={Link} to='/'>
           Home
         </Nav.Link>
-        <Nav.Link as={Link} to='/jobs/0'>
+        <Nav.Link eventKey='2.0' as={Link} to='/jobs/0'>
           Job 0
         </Nav.Link>
-        <Nav.Link as={Link} to='/jobs/1'>
+        <Nav.Link eventKey='2.1' as={Link} to='/jobs/1'>
           Job 1
         </Nav.Link>
-        <Nav.Link as={Link} to='/jobs/2'>
+        <Nav.Link eventKey='2.2' as={Link} to='/jobs/2'>
           Job 2
         </Nav.Link>
-        <Nav.Link as={Link} to='/jobs/3'>
+        <Nav.Link eventKey='2.3' as={Link} to='/jobs/3'>
           Job 3
         </Nav.Link>
-        <Nav.Link as={Link} to='/jobs/4'>
+        <Nav.Link eventKey='2.4' as={Link} to='/jobs/4'>
           Job 4
         </Nav.Link>
-        <Nav.Link as={Link} to='/jobs/5'>
+        <Nav.Link eventKey='2.5' as={Link} to='/jobs/5'>
           Job 5
         </Nav.Link>
       </Nav>
       <Nav>
-        <Nav.Link as={Link} to='/login'>
+        <Nav.Link eventKey='3' as={Link} to='/login'>
           Login
         </Nav.Link>
         <Nav.Link
