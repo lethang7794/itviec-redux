@@ -11,16 +11,14 @@ import LoginPage from './pages/LoginPage';
 function App() {
   return (
     <div className='App'>
+      <MainNavBar />
       <Switch>
         <Route exact path='/login' render={() => <LoginPage />} />
-        <>
-          <MainNavBar />
-          <Route exact path='/' render={() => <JobListPage />} />
-          <Route exact path='/jobs' render={() => <JobListPage />} />
-          <Route exact path='/jobs/:id' render={() => <JobDetailPage />} />
-          <Route exact path='/jobs/:id/apply' render={() => <JobApplyPage />} />
-          <Redirect to='/' />
-        </>
+        <Route exact path='/' render={() => <JobListPage />} />
+        <Route exact path='/jobs' render={() => <JobListPage />} />
+        <Route exact path='/jobs/:id' render={() => <JobDetailPage />} />
+        <Route exact path='/jobs/:id/apply' render={() => <JobApplyPage />} />
+        <Redirect to='/' />
       </Switch>
     </div>
   );
