@@ -7,6 +7,7 @@ import JobListPage from './pages/JobListPage';
 import JobDetailPage from './pages/JobDetailPage';
 import JobApplyPage from './pages/JobApplyPage';
 import LoginPage from './pages/LoginPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const location = useLocation();
@@ -19,7 +20,11 @@ function App() {
         <Route exact path='/' render={() => <JobListPage />} />
         <Route exact path='/jobs' render={() => <JobListPage />} />
         <Route exact path='/jobs/:id' render={() => <JobDetailPage />} />
-        <Route exact path='/jobs/:id/apply' render={() => <JobApplyPage />} />
+        <ProtectedRoute
+          exact
+          path='/jobs/:id/apply'
+          render={(props) => <JobApplyPage {...props} />}
+        />
         <Redirect to='/' />
       </Switch>
     </div>
