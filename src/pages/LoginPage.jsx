@@ -1,11 +1,30 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../redux/actions/auth.actions';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+
+    const user = {
+      email,
+      password,
+    };
+
+    dispatch(authActions.login(user));
+  };
+
   return (
     <div className='LoginPage'>
-      <form className='form-signin text-center'>
+      <form
+        onSubmit={(e) => handleLoginSubmit(e)}
+        className='form-signin text-center'
+      >
         <img
           className='App-logo mb-4'
           src='/logo512.png'
