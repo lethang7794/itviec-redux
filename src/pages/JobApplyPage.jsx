@@ -6,7 +6,7 @@ const JobApplyPage = () => {
   const { id } = useParams();
 
   return (
-    <div class='JobApplyPage'>
+    <div className='JobApplyPage'>
       <Container>
         <h1>{`Hello from JobApplyPage for job#${id}`}</h1>
       </Container>

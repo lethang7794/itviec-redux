@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   return (
     <div className='LoginPage'>
       <form className='form-signin text-center'>
@@ -12,26 +14,32 @@ const LoginPage = () => {
           height='128'
         />
         <h1 className='h3 mb-3 font-weight-normal'>Please sign in</h1>
-        <label for='inputEmail' className='sr-only'>
+        <label htmlFor='inputEmail' className='sr-only'>
           Email address
         </label>
         <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           type='email'
           id='inputEmail'
           className='form-control'
           placeholder='Email address'
           required=''
-          autofocus=''
+          autoFocus=''
+          autoComplete='username'
         />
-        <label for='inputPassword' className='sr-only'>
+        <label htmlFor='inputPassword' className='sr-only'>
           Password
         </label>
         <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           type='password'
           id='inputPassword'
           className='form-control'
           placeholder='Password'
           required=''
+          autoComplete='current-password'
         />
         <div className='checkbox mb-3'>
           <label>
