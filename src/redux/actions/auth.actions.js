@@ -7,10 +7,12 @@ const login = (user) => {
     try {
       // Any login attempt with an email and 'password' as password will pass this mockup authentication system
       if (user && user.email && user.password === 'password') {
-        dispatch({
-          type: 'LOGIN_SUCCESS',
-          payload: user,
-        });
+        setTimeout(() => {
+          dispatch({
+            type: 'LOGIN_SUCCESS',
+            payload: user,
+          });
+        }, 1000);
       } else {
         dispatch({
           type: 'LOGIN_FAILURE',

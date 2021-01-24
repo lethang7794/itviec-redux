@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { Button, Spinner } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../redux/actions/auth.actions';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const isLoading = useSelector((state) => state.auth.isLoading);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const dispatch = useDispatch();
 
@@ -65,9 +69,46 @@ const LoginPage = () => {
             <input type='checkbox' value='remember-me' /> Remember me
           </label>
         </div>
-        <button className='btn btn-lg btn-primary btn-block' type='submit'>
-          Sign in
-        </button>
+        <Button
+          variant='primary'
+          type={'submit'}
+          disabled={isLoading}
+          block
+          className='d-flex justify-content-center align-items-center'
+          style={{ minHeight: '50px' }}
+        >
+          {isLoading ? (
+            <Spinner
+              as='div'
+              animation='border'
+              size='md'
+              role='status'
+              aria-hidden='true'
+            />
+          ) : isAuthenticated ? (
+            <div>✔</div>
+          ) : (
+            'Signin'
+          )}
+        </Button>
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              position: 'absolute',
+              color: 'rgb(29, 161, 242)',
+              opacity: `${isAuthenticated ? '1' : '0'}`,
+              transform: `${
+                isAuthenticated ? 'translateX(0px)' : 'translateX(-30px)'
+              }`,
+              transition:
+                'opacity 0.3s linear 0.3s, transform 0.3s linear 0.3s',
+            }}
+          >
+            {isAuthenticated && (
+              <>You are now logged in. You will soon be redirected.</>
+            )}
+          </div>
+        </div>
       </form>
     </div>
   );
