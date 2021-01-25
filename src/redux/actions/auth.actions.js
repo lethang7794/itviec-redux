@@ -33,6 +33,15 @@ const login = (user) => {
   };
 };
 
+const logout = () => {
+  return async (dispatch) => {
+    dispatch({
+      type: 'LOGOUT',
+    });
+  };
+};
+
 export const authActions = {
   login,
+  logout,
 };

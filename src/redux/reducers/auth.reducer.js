@@ -48,6 +48,14 @@ const authReducer = (state = initialState, action) => {
     };
   }
 
+  if (action.type === 'LOGOUT') {
+    return {
+      ...state,
+      isAuthenticated: false,
+      user: null,
+    };
+  }
+
   return state;
 };
 

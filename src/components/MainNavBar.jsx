@@ -1,12 +1,19 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import coderSchoolLogo from '../images/CoderSchool-Logo.svg';
 import githubMark from '../images/GitHub-Mark-64px.png';
 
 const MainNavBar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch({
+      type: 'LOGOUT',
+    });
+  };
 
   return (
     <Navbar collapseOnSelect bg='light' expand='lg'>
@@ -44,6 +51,11 @@ const MainNavBar = () => {
           {!isAuthenticated && (
             <Nav.Link eventKey='3' as={Link} to='/login'>
               Login
+            </Nav.Link>
+          )}
+          {isAuthenticated && (
+            <Nav.Link eventKey='3.2' as={Link} to='/' onClick={handleLogout}>
+              Logout
             </Nav.Link>
           )}
           <Nav.Link
