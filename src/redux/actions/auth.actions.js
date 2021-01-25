@@ -13,6 +13,11 @@ const login = (user) => {
             payload: user,
           });
         }, 1000);
+        setTimeout(() => {
+          dispatch({
+            type: 'REDIRECTING',
+          });
+        }, 2500);
       } else {
         dispatch({
           type: 'LOGIN_FAILURE',

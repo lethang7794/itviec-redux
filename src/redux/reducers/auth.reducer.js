@@ -3,6 +3,7 @@ const initialState = {
   user: null,
   isLoading: false,
   error: null,
+  shouldRedirect: false,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -30,6 +31,20 @@ const authReducer = (state = initialState, action) => {
       ...state,
       isLoading: false,
       error: action.payload,
+    };
+  }
+
+  if (action.type === 'REDIRECTING') {
+    return {
+      ...state,
+      shouldRedirect: true,
+    };
+  }
+
+  if (action.type === 'REDIRECTED') {
+    return {
+      ...state,
+      shouldRedirect: false,
     };
   }
 

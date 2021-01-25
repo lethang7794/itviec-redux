@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 import { authActions } from '../redux/actions/auth.actions';
 
 const LoginPage = () => {
@@ -11,17 +12,28 @@ const LoginPage = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const dispatch = useDispatch();
-
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-
     const user = {
       email,
       password,
     };
-
     dispatch(authActions.login(user));
   };
+
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: '/' } };
+  let history = useHistory();
+
+  const shouldRedirect = useSelector((state) => state.auth.shouldRedirect);
+  useEffect(() => {
+    if (shouldRedirect) {
+      history.replace(from);
+      dispatch({
+        type: 'REDIRECTED',
+      });
+    }
+  }, [shouldRedirect, history, from, dispatch]);
 
   return (
     <div className='LoginPage'>
